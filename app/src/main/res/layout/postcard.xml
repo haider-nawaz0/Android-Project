@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="550dp"
+    android:id="@+id/postcard"
+    android:layout_centerInParent="true"
+    android:elevation="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Media -->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <!-- Title, secondary and supporting text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post Title"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:text="You lack Nothing! Use what I gave you."
+                android:id="@+id/caption"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="440dp"
+                app:srcCompat="@drawable/bg"
+                android:scaleType="centerCrop"
+                android:contentDescription="Content Description"
+                />
+
+
+        </LinearLayout>
+
+        <!-- Buttons -->
+
+
+
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               >
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentLeft="true"
+                   android:layout_centerVertical="true"
+                   android:layout_marginLeft="20dp"
+                   android:text="7 likes"
+                   android:id="@+id/likes"
+                   android:textSize="20dp"
+
+                   android:textStyle="bold"></TextView>
+
+               <com.google.android.material.button.MaterialButton
+                   style="?attr/borderlessButtonStyle"
+                   android:layout_width="wrap_content"
+
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentRight="true"
+
+                   app:icon="@drawable/ic_baseline_favorite_border_24"
+
+                   ></com.google.android.material.button.MaterialButton>
+
+           </RelativeLayout>
+
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
