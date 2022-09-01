@@ -10,7 +10,10 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2853424072265625" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/fragment_feed.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/postcard.xml" value="0.2625" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1828125" />
       </map>
     </option>
   </component>

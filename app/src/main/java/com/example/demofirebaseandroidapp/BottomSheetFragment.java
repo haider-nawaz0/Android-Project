@@ -44,6 +44,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+//        db = FirebaseFirestore.getInstance();
+////
+//        auth = FirebaseAuth.getInstance();
+
 
         btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
