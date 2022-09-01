@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private ProgressDialog progress;
-    private MaterialButton btnCreatePost;
+    private MaterialButton btnCreatePost, btnSignOut;
 
     RecyclerView recyclerView;
     ArrayList<PostCard> posts;
@@ -50,12 +51,17 @@ public class HomeActivity extends AppCompatActivity {
         progress.setMessage("Fetching Posts...");
         progress.show();
 
+        ProgressDialog progressSignout = new ProgressDialog(this);
+        progressSignout.setCancelable(false);
+        progressSignout.setMessage("Signing out...");
+
+
         recyclerView = findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         posts = new ArrayList<PostCard>();
-        postAdapter = new PostAdapter(getApplicationContext(), posts);
+        postAdapter = new PostAdapter(posts);
 
         recyclerView.setAdapter(postAdapter);
 
@@ -74,16 +80,28 @@ public class HomeActivity extends AppCompatActivity {
                 bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
             }
         });
+
+        btnSignOut = findViewById(R.id.btnSignOut);
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressSignout.show();
+                auth.signOut();
+                progressSignout.dismiss();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            }
+        });
         user = auth.getCurrentUser();
-
-        txtEmail = findViewById(R.id.txtEmail);
-
-
-        txtEmail.setText(user.getEmail().toString());
+//
+//        txtEmail = findViewById(R.id.txtEmail);
+//
+//
+//        txtEmail.setText(user.getEmail().toString());
     }
 
     private void EventChangeListener() {
-        db.collection("users").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error != null){

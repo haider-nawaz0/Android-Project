@@ -8,48 +8,85 @@
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCreatePost"
+        style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create a Post"
+
         android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:id="@+id/btnCreatePost"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_baseline_post_add_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+
         ></com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:id="@+id/btnSignOut"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_baseline_person_remove_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+
+        ></com.google.android.material.button.MaterialButton>
+
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email will be here"
-            android:textSize="16dp"
-            android:layout_margin="20dp"
+            android:text="Posts"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_margin="10dp"
             android:id="@+id/txtEmail"
 
             ></TextView>
 
+
+
+
     </LinearLayout>
 
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
-        android:layout_margin="10dp"
-        ></com.google.android.material.divider.MaterialDivider>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
 
-        ></androidx.recyclerview.widget.RecyclerView>
+        android:layout_centerInParent="true"></androidx.recyclerview.widget.RecyclerView>
 
 
 

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="0dp"
+    android:layout_margin="12dp"
     android:layout_width="match_parent"
-    android:layout_height="550dp"
-    android:id="@+id/postcard"
+    android:layout_height="wrap_content"
+
     android:layout_centerInParent="true"
-    android:elevation="4dp">
+    android:elevation="10dp"
+    app:cardElevation="10dp"
+
+
+    >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,28 +30,38 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Post Title"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"
+                android:text="haider@gmail.com"
+
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+
+                android:id="@+id/cardEmail"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="5dp"
-                android:text="You lack Nothing! Use what I gave you."
-                android:id="@+id/caption"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                />
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="440dp"
-                app:srcCompat="@drawable/bg"
-                android:scaleType="centerCrop"
-                android:contentDescription="Content Description"
-                />
+                android:id="@+id/cardTime"
+                android:text="31 4 2022"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="3dp"
+                android:textSize="12dp"
+                android:layout_marginBottom="25dp"
+
+
+                ></TextView>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="10dp"
+               android:layout_marginLeft="15dp"
+               android:text="this is caption"
+               android:id="@+id/cardCaption"
+               android:textSize="16dp"
+               android:textColor="@color/black"
+
+               ></TextView>
+
 
 
         </LinearLayout>
@@ -62,16 +77,16 @@
                >
 
                <TextView
+                   android:id="@+id/likes"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_alignParentLeft="true"
                    android:layout_centerVertical="true"
                    android:layout_marginLeft="20dp"
                    android:text="7 likes"
-                   android:id="@+id/likes"
-                   android:textSize="20dp"
+                   android:textSize="16dp"
 
-                   android:textStyle="bold"></TextView>
+                  ></TextView>
 
                <com.google.android.material.button.MaterialButton
                    style="?attr/borderlessButtonStyle"
@@ -79,10 +94,17 @@
 
                    android:layout_height="wrap_content"
                    android:layout_alignParentRight="true"
+                   android:layout_centerInParent="true"
+                   android:insetLeft="0dp"
+                   android:insetTop="0dp"
+                   android:insetRight="0dp"
+                   android:insetBottom="0dp"
 
                    app:icon="@drawable/ic_baseline_favorite_border_24"
 
-                   ></com.google.android.material.button.MaterialButton>
+
+                   app:iconGravity="textStart"
+                   app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
 
            </RelativeLayout>
 

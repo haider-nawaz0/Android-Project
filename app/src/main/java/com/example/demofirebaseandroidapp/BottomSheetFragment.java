@@ -71,15 +71,15 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         fieldPost =    (EditText) view.findViewById(R.id.fieldPost);
     }
 
-    private void addPostToFirestore(String postDesc, String email) {
+    private void addPostToFirestore(String caption, String email) {
         Map<String, Object> data = new HashMap<>();
         data.put("addedBy", email);
-        data.put("post", postDesc);
-        data.put("likes", 0);
-        data.put("created_at", new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
+        data.put("caption", caption);
+        data.put("likes", 99);
+        data.put("createdAt", new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
         //data.put("born", 1815);
 
-        db.collection("users")
+        db.collection("posts")
                 .add(data)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

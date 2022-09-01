@@ -10,18 +10,22 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     Button register,login;
     private ProgressDialog progress;
-
+    private FirebaseAuth auth;
+    private FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
         register = findViewById(R.id.btnRegister);
         login = findViewById(R.id.btnLogin);
         progress = new ProgressDialog(this);
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
                 progress.hide();
 
-                finish();
+
             }
         });
 
@@ -49,10 +53,24 @@ public class MainActivity extends AppCompatActivity {
                 progress.show();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 progress.hide();
-                finish();
+
             }
         });
 
 
+
+
     }
+    @Override
+    protected  void onStart() {
+        if(user != null){
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            finish();
+
+        }
+
+        super.onStart();
+    }
+
+
 }

@@ -15,10 +15,9 @@ import java.util.ArrayList;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
 
-    Context context;
 
-    public PostAdapter(Context context, ArrayList<PostCard> posts) {
-        this.context = context;
+    public PostAdapter(ArrayList<PostCard> posts) {
+
         this.posts = posts;
     }
 
@@ -30,15 +29,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     @Override
     public PostAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.postcard, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.postcard, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.MyViewHolder holder, int position) {
-        PostCard card = posts.get(position);
-        holder.caption.setText(card.getPost());
-        holder.likes.setText(card.getLikes()+" likes");
+
+        holder.caption.setText(posts.get(position).getCaption());
+        holder.likes.setText(posts.get(position).getLikes()+" likes");
+        holder.time.setText(posts.get(position).getCreatedAt());
+        holder.cardEmail.setText(posts.get(position).getAddedBy());
     }
 
     @Override
@@ -49,13 +50,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         //Views in the card
-        TextView caption, likes;
+        TextView caption, likes, time, cardEmail;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            caption = itemView.findViewById(R.id.caption);
+            caption = itemView.findViewById(R.id.cardCaption);
             likes = itemView.findViewById(R.id.likes);
+            time = itemView.findViewById(R.id.cardTime);
+            cardEmail = itemView.findViewById(R.id.cardEmail);
         }
     }
 
