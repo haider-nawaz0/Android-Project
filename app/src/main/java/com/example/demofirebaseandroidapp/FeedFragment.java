@@ -2,6 +2,7 @@ package com.example.demofirebaseandroidapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -41,6 +42,8 @@ public class FeedFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<PostCard> posts;
     PostAdapter postAdapter;
+
+
 
 
     //BottomNavigationView bottomNavigation;
@@ -112,6 +115,21 @@ public class FeedFragment extends Fragment {
                getActivity().finish();
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

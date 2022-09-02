@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 case R.id.search:{
-                  //  replaceFragment(new SearchFragment());
+                   replaceFragment(new SearchFragment());
                     break;
                 }
 

@@ -89,20 +89,21 @@
                   ></TextView>
 
                <com.google.android.material.button.MaterialButton
+                   android:id="@+id/btnLike"
                    style="?attr/borderlessButtonStyle"
                    android:layout_width="wrap_content"
 
                    android:layout_height="wrap_content"
                    android:layout_alignParentRight="true"
+
                    android:layout_centerInParent="true"
+
+
                    android:insetLeft="0dp"
                    android:insetTop="0dp"
                    android:insetRight="0dp"
                    android:insetBottom="0dp"
-
                    app:icon="@drawable/ic_baseline_favorite_border_24"
-
-
                    app:iconGravity="textStart"
                    app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
 
