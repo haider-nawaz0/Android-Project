@@ -69,15 +69,6 @@ public class FeedFragment extends Fragment {
         progressSignout.setCancelable(false);
         progressSignout.setMessage("Signing out...");
 
-
-
-
-
-
-
-
-
-
         recyclerView = view.findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));

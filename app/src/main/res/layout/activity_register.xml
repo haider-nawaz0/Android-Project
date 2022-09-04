@@ -4,55 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RegisterActivity">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register Screen"
-        android:layout_centerHorizontal="true"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_marginTop="20sp"
-        ></TextView>
-    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50sp"
+
+        android:text="Register yourself\nhere."
+        android:textAlignment="textStart"
+        android:textSize="40dp"
+        android:textStyle="normal"></TextView>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/fieldsLinearLayout"
+    android:layout_centerVertical="true"
+
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+
+    >
+
+    <com.google.android.material.textfield.TextInputLayout
+
         android:layout_width="match_parent"
+        android:layout_marginBottom="15dp"
+
+
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout"
-      >
+        app:startIconDrawable="@drawable/ic_baseline_text_format_24"
 
-
+        android:hint="Username*">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fieldEmail"
             android:layout_width="match_parent"
+            android:inputType="textPersonName"
+            android:id="@+id/fieldUsername"
+
+
+
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:layout_marginBottom="20dp"
-            ></com.google.android.material.textfield.TextInputEditText>
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
+
+        android:layout_height="wrap_content"
+        android:hint="Email">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fieldPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:layout_marginBottom="40dp"
-            ></com.google.android.material.textfield.TextInputEditText>
+            android:id="@+id/fEmail"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
+    <com.google.android.material.textfield.TextInputLayout
 
-    </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_marginBottom="15dp"
+        app:endIconMode="password_toggle"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+
+        android:hint="Password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:inputType="textPassword"
+            android:id="@+id/fPassword"
+
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+    >
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginRight="10dp"
+
+        app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+        android:hint="Where are you from"
+        >
+        <AutoCompleteTextView
+
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="match_parent"
+        android:id="@+id/chipMale"
+        android:layout_height="68dp"
+        android:textSize="16dp"
+
+        android:text="Male"
+        app:chipCornerRadius="5dp"
+       android:textAlignment="center"
+        app:chipIconEnabled="true"
+
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:padding="5dp"
+
+        ></com.google.android.material.chip.Chip>
+</LinearLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        app:startIconDrawable="@drawable/ic_baseline_description_24"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+
+        android:layout_height="wrap_content"
+        android:hint="Tell us about yourself">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+
+            android:id="@+id/fBio"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
+
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
+        style="?attr/borderlessButtonStyle"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_below="@+id/linearLayout"
-        android:id="@+id/btnR"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="25dp"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:padding="10dp"
+        app:icon="@drawable/ic_baseline_arrow_forward_24"
 
-        ></com.google.android.material.button.MaterialButton>
+        app:iconGravity="textStart"
+
+        app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
+
+
 
 </RelativeLayout>

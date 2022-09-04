@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Button register,login;
     private ProgressDialog progress;
     private FirebaseAuth auth;
-    private FirebaseUser user;
+    public static FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

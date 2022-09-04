@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_arrow_forward_24.xml" value="0.253" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.253" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_location_on_24.xml" value="0.253" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_lock_24.xml" value="0.253" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_text_format_24.xml" value="0.253" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.142" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2127659574468085" />
+        <entry key="app/src/main/res/layout/activity_interests.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2853424072265625" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.24739583333333334" />
         <entry key="app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_feed.xml" value="0.253125" />

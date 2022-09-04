@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(txt_email, txt_pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+                //View rootView = activi.getWindow().getDecorView().findViewById(android.R.id.content);
               //  Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 finish();

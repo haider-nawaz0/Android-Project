@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InterestsActivity">
+
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="90sp"-->
+
+<!--        android:text="Have some\ninterests."-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:textSize="40dp"-->
+<!--        android:textStyle="normal"></TextView>-->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="90sp"
+
+        android:text="Its good to have \ninterests."
+
+        android:textSize="40dp"
+
+        ></TextView>
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:padding="5dp">
+
+        <!-- Chips can be declared here, or added dynamically. -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipOutdoorSports"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:text="Outdoor Sports"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNetflix"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Netflix"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCoding"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Coding"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipFlutter"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Flutter"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipWebDevelopment"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Web Development"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipLibrary"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Library"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipInstruments"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text=" M Instruments"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMusic"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Music"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTikTok"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="TikTok"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipInsta"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Instagram"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMobileDev"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Mobile Development"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipFitness"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Fitness"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipBollywood"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Bollywood"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipChrisPratt"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Chris Prat"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipDC"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="DC World Action"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAllDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chipGroup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:padding="5dp"
+        android:text="All Done"
+
+        ></com.google.android.material.button.MaterialButton>
+
+</RelativeLayout>
