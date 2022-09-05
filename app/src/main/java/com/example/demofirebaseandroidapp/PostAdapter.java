@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
@@ -41,7 +42,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull PostAdapter.MyViewHolder holder, int position) {
 
         holder.caption.setText(posts.get(position).getCaption());
-        holder.likes.setText(posts.get(position).getLikes()+" likes");
+        holder.likes.setText(posts.get(position).getLikes()+"");
         holder.time.setText(posts.get(position).getCreatedAt());
         holder.cardEmail.setText(posts.get(position).getAddedBy());
 
@@ -70,6 +71,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
+
 
         //Views in the card
         TextView caption, likes, time, cardEmail;

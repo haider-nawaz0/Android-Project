@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".BottomSheetFragment">
@@ -11,15 +12,28 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <EditText
-        android:id="@+id/fieldPost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:startIconDrawable="@drawable/ic_write_svgrepo_com"
+      app:counterEnabled="true"
+      app:counterMaxLength="100"
+
+      >
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/fieldPost"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
 
 
-        android:layout_marginTop="10dp"
-        android:hint="Write Post"
-        android:lines="3"></EditText>
+          android:layout_marginTop="10dp"
+          android:hint="Write a Post"
+          android:lines="1"
+          >
+
+      </com.google.android.material.textfield.TextInputEditText>
+  </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.button.MaterialButton
@@ -28,12 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-
-
-
-
+        android:textStyle="bold"
         android:text="Add Post"></com.google.android.material.button.MaterialButton>
-
 
 
 </LinearLayout>

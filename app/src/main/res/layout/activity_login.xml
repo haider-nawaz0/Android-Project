@@ -10,12 +10,13 @@ s
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Screen"
-        android:layout_centerHorizontal="true"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_marginTop="20sp"
-        ></TextView>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50sp"
+
+        android:text="Login to access\nyour account."
+        android:textAlignment="textStart"
+        android:textSize="40dp"
+        android:textStyle="normal"></TextView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,23 +26,43 @@ s
         android:id="@+id/linearLayout"
         >
 
+        <com.google.android.material.textfield.TextInputLayout
 
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fieldEmail"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:layout_marginBottom="20dp"
-            android:outlineSpotShadowColor="@color/black"
-            ></com.google.android.material.textfield.TextInputEditText>
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fieldPassword"
+            android:hint="Email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fieldEmail"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
             android:layout_width="match_parent"
+            android:layout_marginBottom="15dp"
+            app:endIconMode="password_toggle"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:layout_marginBottom="40dp"
-            ></com.google.android.material.textfield.TextInputEditText>
+            app:startIconDrawable="@drawable/ic_baseline_lock_24"
+
+            android:hint="Password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:inputType="textPassword"
+                android:id="@+id/fieldPassword"
+
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
 
     </LinearLayout>
@@ -50,6 +71,7 @@ s
         android:id="@+id/btnL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:text="Login"

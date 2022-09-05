@@ -35,12 +35,10 @@
 
         android:layout_width="match_parent"
         android:layout_marginBottom="15dp"
-
-
         android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/ic_baseline_text_format_24"
+        app:startIconDrawable="@drawable/ic_user_svgrepo_com"
 
-        android:hint="Username*">
+        android:hint="Username">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

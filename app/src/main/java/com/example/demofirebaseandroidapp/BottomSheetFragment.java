@@ -85,6 +85,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         progress.hide();
+
                         Toast.makeText(getContext(), "Success, Post Uploaded.", Toast.LENGTH_SHORT).show();
                     }
                 })

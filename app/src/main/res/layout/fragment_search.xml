@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,65 +7,61 @@
     android:orientation="vertical"
     tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:textSize="25dp"
-        android:textStyle="bold"
-
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-
-
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/linLayout"
+        android:layout_margin="20dp"
 
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="300dp"
-            android:layout_margin="20dp"
-            android:lines="2"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="Find like minded folks.."
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:startIconDrawable="@drawable/ic_baseline_search_24"
 
+    >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/searchField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
+        android:hint="Search by interests..."
+        >
 
-            ></com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputEditText>
+</com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCreatePost"
-            android:layout_marginRight="25dp"
-
-            android:layout_width="wrap_content"
-            android:padding="10dp"
+            android:id="@+id/btnSearch"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            style="?attr/borderlessButtonStyle"
-
-
-
-           app:icon="@drawable/ic_baseline_search_32"
-            android:insetLeft="0dp"
-            android:insetTop="0dp"
-            android:insetRight="0dp"
-            android:insetBottom="0dp"
-
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-
-
+            android:text="Begin Search"
             ></com.google.android.material.button.MaterialButton>
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/bottomTxt"
+        android:layout_below="@+id/linLayout"
+        android:id="@+id/profilesRecyclerView"
+        android:layout_gravity="center"
+
+        ></androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/bottomTxt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+
+        ></TextView>
 
 
-</LinearLayout>
+
+</RelativeLayout>

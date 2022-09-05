@@ -25,6 +25,7 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -32,9 +33,6 @@ import java.util.ArrayList;
 public class FeedFragment extends Fragment {
 
     private FirebaseAuth auth;
-    private FirebaseUser user;
-    private TextView txtEmail;
-
     private FirebaseFirestore db;
     private ProgressDialog progress;
     private MaterialButton btnCreatePost, btnSignOut;
@@ -45,9 +43,6 @@ public class FeedFragment extends Fragment {
 
 
 
-
-    //BottomNavigationView bottomNavigation;
-    ActivityMainBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,25 +103,9 @@ public class FeedFragment extends Fragment {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     private void EventChangeListener() {
-        db.collection("posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("posts").orderBy("createdAt", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error != null){

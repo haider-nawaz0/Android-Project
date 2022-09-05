@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
 
     android:layout_centerInParent="true"
-    android:elevation="10dp"
-    app:cardElevation="10dp"
+    android:elevation="5dp"
+    app:cardElevation="5dp"
 
 
     >
@@ -50,17 +50,17 @@
 
 
                 ></TextView>
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginBottom="10dp"
-               android:layout_marginLeft="15dp"
-               android:text="this is caption"
-               android:id="@+id/cardCaption"
-               android:textSize="16dp"
-               android:textColor="@color/black"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="this is caption"
+                android:id="@+id/cardCaption"
+                android:textSize="16dp"
+                android:textColor="@color/black"
 
-               ></TextView>
+                ></TextView>
 
 
 
@@ -71,43 +71,43 @@
 
 
 
-           <RelativeLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
-               <TextView
-                   android:id="@+id/likes"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentLeft="true"
-                   android:layout_centerVertical="true"
-                   android:layout_marginLeft="20dp"
-                   android:text="7 likes"
-                   android:textSize="16dp"
+            <TextView
+                android:id="@+id/likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="7 likes"
+                android:textSize="16dp"
 
-                  ></TextView>
+                ></TextView>
 
-               <com.google.android.material.button.MaterialButton
-                   android:id="@+id/btnLike"
-                   style="?attr/borderlessButtonStyle"
-                   android:layout_width="wrap_content"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLike"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
 
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
 
-                   android:layout_centerInParent="true"
+                android:layout_centerInParent="true"
 
 
-                   android:insetLeft="0dp"
-                   android:insetTop="0dp"
-                   android:insetRight="0dp"
-                   android:insetBottom="0dp"
-                   app:icon="@drawable/ic_baseline_favorite_border_24"
-                   app:iconGravity="textStart"
-                   app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/ic_baseline_favorite_border_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
 
-           </RelativeLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>

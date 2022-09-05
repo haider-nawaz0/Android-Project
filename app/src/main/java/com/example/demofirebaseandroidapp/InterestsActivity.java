@@ -84,7 +84,7 @@ public class InterestsActivity extends AppCompatActivity {
         data.put("bio", bio);
         data.put("male", isMale);
         data.put("interests", interests);
-        data.put("joined", new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
+        data.put("joined", new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime()));
         data.put("email", email);
 
         db.collection("profiles")
