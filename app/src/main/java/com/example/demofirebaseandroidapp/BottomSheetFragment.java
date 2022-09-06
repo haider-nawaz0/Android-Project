@@ -75,8 +75,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         Map<String, Object> data = new HashMap<>();
         data.put("addedBy", email);
         data.put("caption", caption);
-        data.put("likes", 99);
+        data.put("likes", 0);
         data.put("createdAt", new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
+        //data.put("docId", )
         //data.put("born", 1815);
 
         db.collection("posts")

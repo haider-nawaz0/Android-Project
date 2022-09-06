@@ -13,6 +13,8 @@
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.142" />
         <entry key="app/src/main/res/drawable/ic_baseline_people_24.xml" value="0.1465" />
+        <entry key="app/src/main/res/drawable/ic_file_post_svgrepo_com.xml" value="0.188" />
+        <entry key="app/src/main/res/drawable/ic_letter_communication_post_svgrepo_com.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2127659574468085" />
         <entry key="app/src/main/res/layout/activity_interests.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2635416666666667" />
@@ -22,8 +24,8 @@
         <entry key="app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_feed.xml" value="0.253125" />
-        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2388888888888889" />
-        <entry key="app/src/main/res/layout/postcard.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.19458663242038507" />
+        <entry key="app/src/main/res/layout/postcard.xml" value="0.2758697509765625" />
         <entry key="app/src/main/res/layout/profile_card.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1828125" />
       </map>

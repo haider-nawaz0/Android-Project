@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="12dp"
+    android:layout_margin="25dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
     android:layout_centerInParent="true"
     android:elevation="5dp"
     app:cardElevation="5dp"
+    android:padding="20dp"
 
 
     >
@@ -17,58 +18,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Media -->
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-            <!-- Title, secondary and supporting text -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="haider@gmail.com"
-
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-
-                android:id="@+id/cardEmail"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/cardTime"
-                android:text="31 4 2022"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="3dp"
-                android:textSize="12dp"
-                android:layout_marginBottom="25dp"
-
-
-                ></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"
-                android:text="this is caption"
-                android:id="@+id/cardCaption"
-                android:textSize="16dp"
-                android:textColor="@color/black"
-
-                ></TextView>
-
-
-
-        </LinearLayout>
-
-        <!-- Buttons -->
-
-
 
 
         <RelativeLayout
@@ -76,15 +25,34 @@
             android:layout_height="match_parent"
             >
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPost"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/ic_letter_communication_post_svgrepo_com"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
+
             <TextView
                 android:id="@+id/likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:text="7"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:text="7 likes"
+
+
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="65dp"
                 android:textSize="16dp"
+
 
                 ></TextView>
 
@@ -92,12 +60,8 @@
                 android:id="@+id/btnLike"
                 style="?attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-
-                android:layout_centerInParent="true"
-
+                android:layout_alignParentEnd="true"
 
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
@@ -109,6 +73,62 @@
 
         </RelativeLayout>
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            >
+
+            <TextView
+                android:id="@+id/cardCaption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="this is caption, you can write here whatever\nyou want"
+
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="italic"
+
+                ></TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/cardEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="35dp"
+                android:text="haider@gmail.com"
+
+
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/cardTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardEmail"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="25dp"
+                android:text="31 4 2022"
+                android:textSize="12dp"
+
+
+                ></TextView>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

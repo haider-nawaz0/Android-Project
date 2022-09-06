@@ -25,7 +25,7 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        app:icon="@drawable/ic_baseline_post_add_24"
+        app:icon="@drawable/ic_write_svgrepo_com_2"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
 
@@ -33,12 +33,12 @@
 
     <com.google.android.material.button.MaterialButton
 
+        android:id="@+id/btnSignOut"
         style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:id="@+id/btnSignOut"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="10dp"
@@ -47,7 +47,7 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        app:icon="@drawable/ic_baseline_person_remove_24"
+        app:icon="@drawable/ic_log_out_svgrepo_com"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
 

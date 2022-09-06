@@ -16,6 +16,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -48,6 +51,11 @@ public class SearchFragment extends Fragment {
     private ProgressDialog progress;
     private TextInputEditText searchField;
     private MaterialButton btnSearch;
+    private AutoCompleteTextView autoCompleteTextView;
+    private ArrayAdapter<String> arrayAdapter;
+    private String[] items = {"Gujranwala", "Lahore", "Pindi", "Islamabad"};
+
+    private String locationSelected;
 
 
     @Override
@@ -81,6 +89,21 @@ public class SearchFragment extends Fragment {
         searchField = view.findViewById(R.id.searchField);
         btnSearch = view.findViewById(R.id.btnSearch);
 
+        autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView);
+        arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.dropdown_item, items);
+        autoCompleteTextView.setAdapter(arrayAdapter);
+
+
+        //Handle drop down click
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapterView.getItemAtPosition(i).toString();
+                locationSelected = item.toString();
+                Toast.makeText(getContext(), locationSelected, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 //        searchField.addTextChangedListener(new TextWatcher() {
 //            @Override
 //            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -107,14 +130,14 @@ public class SearchFragment extends Fragment {
                 String queryTxt = searchField.getText().toString();
                 queryTxt = queryTxt.substring(0, 1).toUpperCase() + queryTxt.substring(1);
                 progress.show();
-                ProfileChangeListener(queryTxt);
+                ProfileChangeListener(queryTxt, locationSelected);
             }
         });
 
     }
 
-    private void ProfileChangeListener(String query) {
-        db.collection("profiles").whereArrayContains("interests", query).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    private void ProfileChangeListener(String query, String loc) {
+        db.collection("profiles").whereEqualTo("location", loc).whereArrayContains("interests", query).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 

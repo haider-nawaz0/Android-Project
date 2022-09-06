@@ -69,12 +69,13 @@ public class FeedFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         posts = new ArrayList<PostCard>();
-        postAdapter = new PostAdapter(posts);
 
-        recyclerView.setAdapter(postAdapter);
+
+
 
         db = FirebaseFirestore.getInstance();
-
+        postAdapter = new PostAdapter(posts, db);
+        recyclerView.setAdapter(postAdapter);
         auth = FirebaseAuth.getInstance();
         EventChangeListener();
 

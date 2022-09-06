@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linLayout"
-        android:layout_margin="20dp"
+       android:layout_margin="20dp"
 
         android:orientation="vertical">
 
@@ -21,38 +21,67 @@
     android:layout_height="wrap_content"
     app:startIconDrawable="@drawable/ic_baseline_search_24"
 
+    android:layout_gravity="center_vertical"
+
     >
     <com.google.android.material.textfield.TextInputEditText
+
         android:id="@+id/searchField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:hint="Search by interests..."
+        android:hint="Search by interests"
         >
 
     </com.google.android.material.textfield.TextInputEditText>
 </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSearch"
-            android:layout_marginTop="10dp"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Begin Search"
-            ></com.google.android.material.button.MaterialButton>
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="8dp"
+
+            android:gravity="center_vertical"
+
+
+            app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+            android:hint="Choose location"
+            >
+            <AutoCompleteTextView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
     </LinearLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linLayout"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="20dp"
+        android:text="Begin Search"></com.google.android.material.button.MaterialButton>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profilesRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_above="@+id/bottomTxt"
-        android:layout_below="@+id/linLayout"
-        android:id="@+id/profilesRecyclerView"
-        android:layout_gravity="center"
+        android:layout_below="@+id/btnSearch"
+        android:layout_centerInParent="true"
 
-        ></androidx.recyclerview.widget.RecyclerView>
+        android:layout_gravity="center"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/bottomTxt"
