@@ -45,5 +45,13 @@
         android:textStyle="bold"
         android:text="Add Post"></com.google.android.material.button.MaterialButton>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:text="Add Image"></com.google.android.material.button.MaterialButton>
 
 </LinearLayout>

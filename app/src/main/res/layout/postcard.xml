@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="35dp"
+                android:layout_marginRight="25dp"
                 android:text="haider@gmail.com"
 
 
@@ -120,7 +120,7 @@
                 android:layout_below="@+id/cardEmail"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="2dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginRight="30dp"
                 android:layout_marginBottom="25dp"
                 android:text="31 4 2022"
                 android:textSize="12dp"

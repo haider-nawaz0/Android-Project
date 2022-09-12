@@ -34,13 +34,14 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText email, password;
     private Chip chipMale;
 
+
     public  static boolean isMale = true;
 
 
     public static TextInputEditText fBio, fieldUsername;
     public static String userLocation, txt_bio, txtUsername, txt_email;
 
-    private MaterialButton next;
+    private MaterialButton next,btnMoveToLoginScreen;
 
     private AutoCompleteTextView autoCompleteTextView;
     private ArrayAdapter<String> arrayAdapter;
@@ -55,13 +56,21 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
+        btnMoveToLoginScreen = findViewById(R.id.btnMoveToLoginScreen);
         fBio = findViewById(R.id.fBio);
         fieldUsername = findViewById(R.id.fieldUsername);
 
 
         userProfileData = new ArrayList<>();
         chipMale = findViewById(R.id.chipMale);
+
+        btnMoveToLoginScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
 
         chipMale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

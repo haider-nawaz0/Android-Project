@@ -55,10 +55,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         holder.time.setText(posts.get(position).getCreatedAt());
         holder.cardEmail.setText(posts.get(position).getAddedBy());
 
+
+//        //Check if the current user likes the post
+//        for(PostCard i: posts){
+//            Toast.makeText(holder.caption.getContext(), i.getLikedBy().get(0)+"", Toast.LENGTH_SHORT).show();
+//            for(String email: i.getLikedBy()){
+//                if(MainActivity.user.getEmail().toString().equals(email)){
+//                    isLikeBtnClicked = true;
+//                    Toast.makeText(holder.caption.getContext(), "You have liked a post already", Toast.LENGTH_SHORT).show();
+//                    holder.btnLike.setIcon(ContextCompat.getDrawable(holder.btnLike.getContext(),R.drawable.ic_baseline_favorite_24));
+//
+//                }else {
+//                    isLikeBtnClicked = false;
+//                }
+//            }
+//        }
+
+
+
         holder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               isLikeBtnClicked = !isLikeBtnClicked;
+              isLikeBtnClicked = !isLikeBtnClicked;
 
                 if(isLikeBtnClicked){
                     int curr_likes = posts.get(position).getLikes();

@@ -2,6 +2,8 @@ package com.example.demofirebaseandroidapp;
 
 import com.google.firebase.firestore.DocumentId;
 
+import java.util.ArrayList;
+
 public class PostCard {
 
     private String caption;
@@ -9,6 +11,16 @@ public class PostCard {
     private String addedBy;  //email of the user who added it.
     private String createdAt;
     private String docId;
+    private ArrayList<String> likedBy;
+
+    public ArrayList<String> getLikedBy() {
+        return likedBy;
+    }
+
+    public void setLikedBy(ArrayList<String> likedBy) {
+        this.likedBy = likedBy;
+    }
+
     @DocumentId
     public String getDocId() {
         return docId;
@@ -38,12 +50,13 @@ public class PostCard {
 
     }
 
-    public PostCard(String caption, int likes, String addedBy, String createdAt, String docId) {
+    public PostCard(String caption, int likes, String addedBy, String createdAt, String docId, ArrayList<String> likedBy) {
         this.caption = caption;
         this.likes = likes;
         this.addedBy = addedBy;
         this.createdAt = createdAt;
         this.docId = docId;
+        this.likedBy = likedBy;
     }
 
     public int getLikes() {

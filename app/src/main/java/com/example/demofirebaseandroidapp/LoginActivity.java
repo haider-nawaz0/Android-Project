@@ -12,13 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText email, password;
-    private Button login;
+    private MaterialButton login, btnMoveToSignUpScreen;
     private FirebaseAuth auth;
     private ProgressDialog progress;
 
@@ -37,8 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.fieldEmail);
         password = findViewById(R.id.fieldPassword);
         login = findViewById(R.id.btnL);
+        btnMoveToSignUpScreen = findViewById(R.id.btnMoveToSignUpScreen);
         auth = FirebaseAuth.getInstance();
 
+
+        btnMoveToSignUpScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                finish();
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser(txt_email, txt_pass);
             }
         });
+
 
 
 

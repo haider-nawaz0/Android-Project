@@ -5,25 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
-s
+
 
     <TextView
+        android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="20sp"
 
         android:text="Login to access\nyour account."
         android:textAlignment="textStart"
         android:textSize="40dp"
         android:textStyle="normal"></TextView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLogin"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_mobile_login_pana">
+
+    </ImageView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="20dp"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+       android:layout_marginBottom="15dp"
         android:orientation="vertical"
         android:id="@+id/linearLayout"
+        android:layout_below="@+id/imageView"
         >
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,15 +85,40 @@ s
 
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnL"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:text="Login"
+        android:gravity="center"
 
-        ></com.google.android.material.button.MaterialButton>
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnL"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+
+            android:layout_width="match_parent"
+            app:cornerRadius="50dp"
+            android:layout_height="55dp"
+
+            android:layout_centerHorizontal="true"
+
+
+            android:text="Login"></com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMoveToSignUpScreen"
+
+
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:text="Sign Up Instead"
+
+
+            android:textSize="14dp"></com.google.android.material.button.MaterialButton>
+    </LinearLayout>
 
 </RelativeLayout>

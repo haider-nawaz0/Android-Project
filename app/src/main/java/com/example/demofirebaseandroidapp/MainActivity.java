@@ -9,16 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button register,login;
-    private ProgressDialog progress;
+    MaterialButton btnLetsGo;
+
     private FirebaseAuth auth;
     public static FirebaseUser user;
+    private View parentLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,34 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        register = findViewById(R.id.btnRegister);
-        login = findViewById(R.id.btnLogin);
-        progress = new ProgressDialog(this);
-        progress.setTitle("Loading");
-        progress.setMessage("Wait while loading...");
-        progress.setCancelable(false);
+        btnLetsGo = findViewById(R.id.btnLetsGo);
 
+        parentLayout = findViewById(android.R.id.content);
 
-
-        register.setOnClickListener(new View.OnClickListener() {
+        btnLetsGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress.show();
-
-                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
-                progress.hide();
-
-
-            }
-        });
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progress.show();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                progress.hide();
-
+                finish();
             }
         });
 
@@ -64,9 +48,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected  void onStart() {
         if(user != null){
+
+            Snackbar.make(parentLayout, "Logged in as"+user.getEmail().toString(), Snackbar.LENGTH_SHORT)
+                    .show();
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();
 
+        }else {
+            Snackbar.make(parentLayout, "No user logged in!", Snackbar.LENGTH_SHORT)
+                    .show();
         }
 
         super.onStart();

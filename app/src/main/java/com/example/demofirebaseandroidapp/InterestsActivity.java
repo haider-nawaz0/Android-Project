@@ -34,7 +34,7 @@ public class InterestsActivity extends AppCompatActivity {
     private FirebaseFirestore db;
 
     private ProgressDialog progress;
-
+    private View parentLayout;
     private List<String> interests;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class InterestsActivity extends AppCompatActivity {
 
         chipGroup = findViewById(R.id.chipGroup);
         btnAllDone = findViewById(R.id.btnAllDone);
+        parentLayout = findViewById(android.R.id.content);
 
         btnAllDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,9 @@ public class InterestsActivity extends AppCompatActivity {
                 //save the profile data
                 addProfileToFirestore(RegisterActivity.txtUsername, RegisterActivity.txt_email, RegisterActivity.txt_bio, RegisterActivity.userLocation, RegisterActivity.isMale);
 
+                //Show the success Snackar
+                Snackbar.make(parentLayout, "Account Created Successfully.", Snackbar.LENGTH_SHORT)
+                        .show();
             }
         });
 

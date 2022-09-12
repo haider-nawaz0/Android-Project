@@ -1,11 +1,14 @@
 package com.example.demofirebaseandroidapp;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,24 +20,32 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Array;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BottomSheetFragment extends BottomSheetDialogFragment {
 
 
-    private MaterialButton btnAddPost;
+    private MaterialButton btnAddPost, btnAddImage;
     private FirebaseFirestore db;
     private EditText fieldPost;
     private FirebaseUser user;
     private ProgressDialog progress;
+    private List<String> likedBy;
+    private final int PICK_IMAGE_REQUEST = 22;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +54,22 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         btnAddPost = view.findViewById(R.id.btnAddPost);
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
+        likedBy = new ArrayList<String>();
+        btnAddImage = view.findViewById(R.id.btnAddImage);
+
+        btnAddImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(
+                        Intent.createChooser(
+                                intent,
+                                "Select Image from here..."),
+                        PICK_IMAGE_REQUEST);
+            }
+        });
 
 
         btnAddPost.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +79,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                 progress.show();
                  String txtPost = fieldPost.getText().toString();
                  addPostToFirestore(txtPost, user.getEmail());
+
+
             }
         });
         return view;
@@ -66,9 +95,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         progress = new ProgressDialog(view.getContext());
         progress.setTitle("Loading");
         progress.setMessage("Wait while loading...");
-        progress.setCancelable(false); // disabl
+        progress.setCancelable(false);
 
         fieldPost =    (EditText) view.findViewById(R.id.fieldPost);
+
     }
 
     private void addPostToFirestore(String caption, String email) {
@@ -77,6 +107,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         data.put("caption", caption);
         data.put("likes", 0);
         data.put("createdAt", new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
+        data.put("likedBy",likedBy);
         //data.put("docId", )
         //data.put("born", 1815);
 
@@ -87,7 +118,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                     public void onSuccess(DocumentReference documentReference) {
                         progress.hide();
 
-                        Toast.makeText(getContext(), "Success, Post Uploaded.", Toast.LENGTH_SHORT).show();
+                        dismiss();
+
+                        Snackbar.make(getActivity().findViewById(android.R.id.content), "Post Uploaded", Snackbar.LENGTH_LONG)
+                                .show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

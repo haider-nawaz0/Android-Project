@@ -181,5 +181,23 @@
         app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
 
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMoveToLoginScreen"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="30dp"
+
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:padding="10dp"
+        android:text="Login here"
+        android:textStyle="bold"></com.google.android.material.button.MaterialButton>
+
 
 </RelativeLayout>
