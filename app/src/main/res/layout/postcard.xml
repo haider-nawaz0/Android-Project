@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="25dp"
+    android:layout_marginTop="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
@@ -16,13 +16,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:orientation="vertical">
-
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             >
 
             <com.google.android.material.button.MaterialButton
@@ -37,9 +37,81 @@
                 android:insetTop="0dp"
                 android:insetRight="0dp"
                 android:insetBottom="0dp"
-                app:icon="@drawable/ic_letter_communication_post_svgrepo_com"
+                app:icon="@drawable/ic_male_user"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
+
+
+            <TextView
+                android:id="@+id/cardEmail"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="false"
+                android:layout_marginLeft="0dp"
+                android:layout_toRightOf="@+id/btnPost"
+                android:text="haider@gmail.com"
+
+
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/cardTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardEmail"
+                android:layout_alignParentRight="false"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="0dp"
+                android:layout_toRightOf="@+id/btnPost"
+
+                android:layout_marginBottom="25dp"
+                android:text="31 4 2022"
+                android:textSize="12dp"
+
+
+                ></TextView>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:id="@+id/cardCaption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_centerInParent="false"
+                android:layout_marginLeft="15dp"
+                android:text="this is caption, you can write here whatever\nyou want"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="italic"></TextView>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/postImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+
+            android:src="@drawable/ic_male_user"
+            ></ImageView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
             <TextView
                 android:id="@+id/likes"
@@ -74,61 +146,7 @@
         </RelativeLayout>
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            >
 
-            <TextView
-                android:id="@+id/cardCaption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="10dp"
-                android:text="this is caption, you can write here whatever\nyou want"
-
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:textStyle="italic"
-
-                ></TextView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <TextView
-                android:id="@+id/cardEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="25dp"
-                android:text="haider@gmail.com"
-
-
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textSize="14dp" />
-
-            <TextView
-                android:id="@+id/cardTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardEmail"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="25dp"
-                android:text="31 4 2022"
-                android:textSize="12dp"
-
-
-                ></TextView>
-
-        </RelativeLayout>
 
     </LinearLayout>
 

@@ -11,6 +11,16 @@ public class PostCard {
     private String addedBy;  //email of the user who added it.
     private String createdAt;
     private String docId;
+    private String imageLink;
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
     private ArrayList<String> likedBy;
 
     public ArrayList<String> getLikedBy() {
@@ -50,13 +60,14 @@ public class PostCard {
 
     }
 
-    public PostCard(String caption, int likes, String addedBy, String createdAt, String docId, ArrayList<String> likedBy) {
+    public PostCard(String caption, int likes, String addedBy, String createdAt, String docId, ArrayList<String> likedBy, String imageLink) {
         this.caption = caption;
         this.likes = likes;
         this.addedBy = addedBy;
         this.createdAt = createdAt;
         this.docId = docId;
         this.likedBy = likedBy;
+        this.imageLink = imageLink;
     }
 
     public int getLikes() {

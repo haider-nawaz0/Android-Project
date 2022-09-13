@@ -4,11 +4,15 @@ import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +25,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 
@@ -48,12 +58,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
+
 
         holder.caption.setText(posts.get(position).getCaption());
         holder.likes.setText(posts.get(position).getLikes()+"");
         holder.time.setText(posts.get(position).getCreatedAt());
         holder.cardEmail.setText(posts.get(position).getAddedBy());
+
+        Picasso.get().load(posts.get(position).getImageLink()).fit().centerCrop().into(holder.postImage);
 
 
 //        //Check if the current user likes the post
@@ -136,6 +150,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         });
     }
 
+
+
     @Override
     public int getItemCount() {
         return posts.size();
@@ -147,6 +163,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         //Views in the card
         TextView caption, likes, time, cardEmail;
         MaterialButton btnLike;
+        ImageView postImage;
 
 
 
@@ -158,6 +175,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
             time = itemView.findViewById(R.id.cardTime);
             cardEmail = itemView.findViewById(R.id.cardEmail);
             btnLike = itemView.findViewById(R.id.btnLike);
+            postImage = itemView.findViewById(R.id.postImage);
         }
     }
 
