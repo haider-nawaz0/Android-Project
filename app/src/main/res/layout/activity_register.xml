@@ -12,11 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="20sp"
+       android:id="@+id/txtRegister"
 
         android:text="Register yourself\nhere."
         android:textAlignment="textStart"
-        android:textSize="40dp"
+        android:textSize="35dp"
         android:textStyle="normal"></TextView>
 
 
@@ -24,7 +25,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/fieldsLinearLayout"
-    android:layout_centerVertical="true"
+    android:layout_centerVertical="false"
+    android:layout_below="@+id/txtRegister"
 
     android:layout_margin="20dp"
     android:orientation="vertical"
@@ -69,6 +71,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+
     <com.google.android.material.textfield.TextInputLayout
 
         android:layout_width="match_parent"
@@ -90,6 +94,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 <LinearLayout
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -135,6 +140,27 @@
         ></com.google.android.material.chip.Chip>
 </LinearLayout>
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+
+        app:strokeColor="@color/black"
+        android:layout_marginBottom="20dp"
+        app:strokeWidth="1dp"
+
+        android:layout_height="100dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/profileImageView"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_baseline_add_24"
+
+            android:layout_height="match_parent">
+
+
+        </ImageView>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
     <com.google.android.material.textfield.TextInputLayout
 
@@ -142,7 +168,7 @@
         android:layout_width="match_parent"
         app:startIconDrawable="@drawable/ic_baseline_description_24"
         app:counterEnabled="true"
-        app:counterMaxLength="20"
+        app:counterMaxLength="30"
 
         android:layout_height="wrap_content"
         android:hint="Tell us about yourself">

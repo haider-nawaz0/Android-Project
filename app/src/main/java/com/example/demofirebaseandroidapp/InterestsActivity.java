@@ -90,6 +90,7 @@ public class InterestsActivity extends AppCompatActivity {
         data.put("interests", interests);
         data.put("joined", new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime()));
         data.put("email", email);
+        data.put("profileImageLink", RegisterActivity.imageDownloadLink);
 
         db.collection("profiles")
                 .add(data)

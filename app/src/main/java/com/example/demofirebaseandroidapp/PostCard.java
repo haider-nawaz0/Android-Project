@@ -7,11 +7,13 @@ import java.util.ArrayList;
 public class PostCard {
 
     private String caption;
+    private String username;
     private int likes;
     private String addedBy;  //email of the user who added it.
     private String createdAt;
     private String docId;
-    private String imageLink;
+    private String imageLink, authorImageLink;
+
 
     public String getImageLink() {
         return imageLink;
@@ -60,7 +62,23 @@ public class PostCard {
 
     }
 
-    public PostCard(String caption, int likes, String addedBy, String createdAt, String docId, ArrayList<String> likedBy, String imageLink) {
+    public String getAuthorImageLink() {
+        return authorImageLink;
+    }
+
+    public void setAuthorImageLink(String authorImageLink) {
+        this.authorImageLink = authorImageLink;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public PostCard(String caption, int likes, String addedBy, String createdAt, String docId, ArrayList<String> likedBy, String imageLink, String authorImageLink, String username) {
         this.caption = caption;
         this.likes = likes;
         this.addedBy = addedBy;
@@ -68,6 +86,8 @@ public class PostCard {
         this.docId = docId;
         this.likedBy = likedBy;
         this.imageLink = imageLink;
+        this.authorImageLink = authorImageLink;
+        this.username = username;
     }
 
     public int getLikes() {

@@ -36,6 +36,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -53,7 +55,7 @@ import java.util.UUID;
 public class BottomSheetFragment extends BottomSheetDialogFragment {
 
 
-    private MaterialButton btnAddPost, btnAddImage;
+    private MaterialButton btnAddPost;
     private FirebaseFirestore db;
     private EditText fieldPost;
     private FirebaseUser user;
@@ -63,6 +65,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
     ActivityResultLauncher<String> activityResultLauncher;
     private Uri imageUri;
     private String imageDownloadLink;
+    private FirebaseAuth  auth;
+
+    public static String currUserImage;
 
 
     @Override
@@ -74,11 +79,11 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         likedBy = new ArrayList<String>();
+        auth = FirebaseAuth.getInstance();
 
 
 
-
-
+        getCurrUserProfileImage();
 
         btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +91,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
 
                 progress.show();
                uploadPostImage();
-
-
 
             }
         });
@@ -144,6 +147,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         data.put("createdAt", new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
         data.put("likedBy",likedBy);
         data.put("imageLink", imageDownloadLink);
+        data.put("authorImageLink", currUserImage);
+        data.put("username", LoginActivity.currUsername);
 
 
         db.collection("posts")
@@ -172,41 +177,69 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
 
     }
 
-    private void uploadPostImage(){
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        // Create a storage reference from our app
-        StorageReference storageRef = storage.getReference().child("images/"+ UUID.randomUUID().toString());
+    private void getCurrUserProfileImage(){
 
 
+        db = FirebaseFirestore.getInstance();
 
 
-        storageRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if(task.isSuccessful()){
-                    //Toast.makeText(getContext(), "Image Uplaoded", Toast.LENGTH_SHORT).show();
-                   storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                       @Override
-                       public void onSuccess(Uri uri) {
-                            imageDownloadLink  = uri.toString();
-
-                            //Add other data
-                           String txtPost = fieldPost.getText().toString();
-                           addPostToFirestore(txtPost, user.getEmail());
+        db.collection("profiles").whereEqualTo("email", auth.getCurrentUser().getEmail().toString()).get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
 
 
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                currUserImage = document.getString("profileImageLink");
+                               // Toast.makeText(getContext(), currUserImage, Toast.LENGTH_SHORT).show();
+                            }
 
-
-                       }
-                   });
-
-
-                }else {
-                    Toast.makeText(getContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
-
+                        }
+                    }
                 }
-            }
-        });
+        );
+
+    }
+
+    private void uploadPostImage(){
+
+        if(imageUri != null){
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            // Create a storage reference from our app
+            StorageReference storageRef = storage.getReference().child("images/"+ UUID.randomUUID().toString());
+
+            storageRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if(task.isSuccessful()){
+                        //Toast.makeText(getContext(), "Image Uplaoded", Toast.LENGTH_SHORT).show();
+                        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                imageDownloadLink  = uri.toString();
+
+                                //Add other data
+                                String txtPost = fieldPost.getText().toString();
+                                addPostToFirestore(txtPost, user.getEmail());
+
+                            }
+                        });
+
+
+                    }else {
+                        Toast.makeText(getContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+        }
+        else {
+            //Add other data
+            String txtPost = fieldPost.getText().toString();
+            addPostToFirestore(txtPost, user.getEmail());
+        }
+
 
 
     }

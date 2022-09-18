@@ -76,6 +76,17 @@
             app:checkedIcon="@drawable/ic_baseline_check_24" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/Lofi"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Lofi"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+
+        <com.google.android.material.chip.Chip
             android:id="@+id/chipFlutter"
 
             style="@style/Widget.MaterialComponents.Chip.Choice"

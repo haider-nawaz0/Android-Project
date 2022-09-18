@@ -1,14 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:orientation="vertical"
+
     tools:context=".ChatFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Chat Fragment" />
+        >
 
-</FrameLayout>
+
+
+
+        <TextView
+            android:id="@+id/txtYourProfile"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Your Profile Preview"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="normal" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/YourProfileRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtYourProfile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/txtMyPosts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/YourProfileRecycleView"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="5dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Your Posts"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="normal" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myPostsRecycleView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottomBar"
+            android:layout_below="@+id/txtMyPosts"
+
+            android:layout_centerInParent="true"></androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
+            ></TextView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

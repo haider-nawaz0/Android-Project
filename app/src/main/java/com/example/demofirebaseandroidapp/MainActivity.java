@@ -40,23 +40,17 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
     }
-    @Override
-    protected  void onStart() {
-        if(user != null){
 
-            Snackbar.make(parentLayout, "Logged in as"+user.getEmail().toString(), Snackbar.LENGTH_SHORT)
-                    .show();
+
+    @Override
+    protected void onStart() {
+        if(user != null){
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();
 
         }else {
-            Snackbar.make(parentLayout, "No user logged in!", Snackbar.LENGTH_SHORT)
-                    .show();
+
         }
 
         super.onStart();

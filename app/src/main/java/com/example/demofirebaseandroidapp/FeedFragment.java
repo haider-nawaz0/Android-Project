@@ -1,10 +1,14 @@
 package com.example.demofirebaseandroidapp;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,19 +20,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.demofirebaseandroidapp.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FeedFragment extends Fragment {
 
@@ -41,7 +54,7 @@ public class FeedFragment extends Fragment {
     ArrayList<PostCard> posts;
     PostAdapter postAdapter;
 
-
+    CircleImageView loggedInUserImage;
 
 
     @Override
@@ -68,15 +81,18 @@ public class FeedFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+//        loggedInUserImage = view.findViewById(R.id.loggedInUserImage);
+//
+//        Picasso.get().load(BottomSheetFragment.currUserImage).into(loggedInUserImage);
+
         posts = new ArrayList<PostCard>();
-
-
-
-
         db = FirebaseFirestore.getInstance();
         postAdapter = new PostAdapter(posts, db);
         recyclerView.setAdapter(postAdapter);
         auth = FirebaseAuth.getInstance();
+
+
+
         EventChangeListener();
 
 
@@ -95,11 +111,30 @@ public class FeedFragment extends Fragment {
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressSignout.show();
-                auth.signOut();
-                progressSignout.dismiss();
-                startActivity(new Intent(view.getContext(), MainActivity.class));
-               getActivity().finish();
+
+
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle("Sign out.")
+                        .setMessage("Proceed with signing out?")
+
+                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Continue with delete operation
+                                progressSignout.show();
+                                auth.signOut();
+                                progressSignout.dismiss();
+                                startActivity(new Intent(view.getContext(), MainActivity.class));
+                                getActivity().finish();
+                            }
+                        })
+
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
             }
         });
 
@@ -122,10 +157,14 @@ public class FeedFragment extends Fragment {
 
                     postAdapter.notifyDataSetChanged();
                     progress.dismiss();
+
+
                 }
             }
         });
     }
+
+
 
 
 

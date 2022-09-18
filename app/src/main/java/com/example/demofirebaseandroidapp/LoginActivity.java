@@ -1,5 +1,6 @@
 package com.example.demofirebaseandroidapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -11,10 +12,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,6 +29,11 @@ public class LoginActivity extends AppCompatActivity {
     private MaterialButton login, btnMoveToSignUpScreen;
     private FirebaseAuth auth;
     private ProgressDialog progress;
+    private FirebaseFirestore db;
+
+    public static String currUsername;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +42,9 @@ public class LoginActivity extends AppCompatActivity {
         progress = new ProgressDialog(this);
         progress.setTitle("Loading");
         progress.setMessage("Wait while loading...");
-        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.setCancelable(false);
 
-// To dismiss the dialog
-
+        // disable dismiss by tapping outside of the dialog
 
         email = findViewById(R.id.fieldEmail);
         password = findViewById(R.id.fieldPassword);
@@ -57,27 +68,59 @@ public class LoginActivity extends AppCompatActivity {
                 String txt_email = email.getText().toString();
                 String txt_pass = password.getText().toString();
 
-
                 loginUser(txt_email, txt_pass);
             }
         });
-
-
-
-
     }
 
     private void loginUser(String txt_email, String txt_pass) {
         auth.signInWithEmailAndPassword(txt_email, txt_pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                //View rootView = activi.getWindow().getDecorView().findViewById(android.R.id.content);
-              //  Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                finish();
-                progress.dismiss();
+
+
+                //If the user is logged in, get his profile iamge link
+
+
+                getCurrUsername();
+
+
+
             }
 
         });
     }
+    private void getCurrUsername(){
+
+
+        db = FirebaseFirestore.getInstance();
+
+
+        db.collection("profiles").whereEqualTo("email", auth.getCurrentUser().getEmail().toString()).get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                               currUsername = document.getString("username");
+                                Toast.makeText(getApplicationContext(), currUsername, Toast.LENGTH_SHORT).show();
+                            }
+                            progress.dismiss();
+
+                            //Once we get the profile image link and set it to the static var, then we move to the next screen
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            finish();
+
+                        }
+                    }
+                }
+        );
+
+    }
+
+
+
+
 }

@@ -1,64 +1,133 @@
 package com.example.demofirebaseandroidapp;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ChatFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+
 public class ChatFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FirebaseAuth auth;
+    private FirebaseFirestore db;
+    private ProgressDialog progress;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public ChatFragment() {
-        // Required empty public constructor
-    }
+    RecyclerView recyclerView, userProfileRecycleView;
+    ArrayList<PostCard> posts;
+    PostAdapter postAdapter;
+    private ProfileAdapter profileAdapter;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChatFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ChatFragment newInstance(String param1, String param2) {
-        ChatFragment fragment = new ChatFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private ArrayList<Profile> profiles;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        progress = new ProgressDialog(view.getContext());
+        progress.setCancelable(false);
+        progress.setMessage("Fetching Your Posts...");
+        progress.show();
+
+
+
+        recyclerView = view.findViewById(R.id.myPostsRecycleView);
+        userProfileRecycleView = view.findViewById(R.id.YourProfileRecycleView);
+
+        recyclerView.setHasFixedSize(true);
+        userProfileRecycleView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        userProfileRecycleView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        profiles = new ArrayList<Profile>();
+        profileAdapter = new ProfileAdapter(profiles);
+
+        userProfileRecycleView.setAdapter(profileAdapter);
+
+        posts = new ArrayList<PostCard>();
+        db = FirebaseFirestore.getInstance();
+        postAdapter = new PostAdapter(posts, db);
+        recyclerView.setAdapter(postAdapter);
+        auth = FirebaseAuth.getInstance();
+        EventChangeListener();
+        ProfileChangeListener(auth.getCurrentUser().getEmail().toString());
+    }
+
+
+    private void EventChangeListener() {
+        db.collection("posts").whereEqualTo("addedBy", auth.getCurrentUser().getEmail().toString()).orderBy("createdAt", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error != null){
+                    progress.dismiss();
+                    Log.e("firestore error", error.getMessage());
+                    return;
+                }
+
+                for(DocumentChange dc: value.getDocumentChanges()){
+                    if(dc.getType() == DocumentChange.Type.ADDED){
+                        posts.add(dc.getDocument().toObject(PostCard.class));
+                    }
+
+                    postAdapter.notifyDataSetChanged();
+                    progress.dismiss();
+                }
+            }
+        });
+    }
+
+    private void ProfileChangeListener(String curr_email) {
+        db.collection("profiles").whereEqualTo("email", curr_email).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+
+                if(!task.isSuccessful()){
+                    progress.dismiss();
+                    Toast.makeText(getView().getContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }else {
+
+                    for(QueryDocumentSnapshot document: task.getResult()){
+
+                        //Toast.makeText(getView().getContext(), document.toObject(Profile.class).toString(), Toast.LENGTH_SHORT).show();
+                        profiles.add(document.toObject(Profile.class));
+                        profileAdapter.notifyDataSetChanged();
+                        progress.dismiss();
+                    }
+                }
+            }
+        });
+
+
     }
 }

@@ -3,6 +3,7 @@ package com.example.demofirebaseandroidapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,11 +40,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.MyViewHo
         holder.cardLocation.setText(profiles.get(position).getLocation());
         holder.cardJoined.setText("joined on "+profiles.get(position).getJoined());
         holder.cardBio.setText(profiles.get(position).getBio());
+        holder.cardGender.setText(profiles.get(position).isMale()? "M":"F");
+        Picasso.get().load(profiles.get(position).getProfileImageLink()).fit().centerCrop().into(holder.profileImage);
 
 
-        if(!profiles.get(position).isMale()){
-            holder.profileIcon.setIcon(holder.itemView.getResources().getDrawable( R.drawable.ic_woman_female_icon));
-        }
 
        // holder.chipGroup.addView(new Chip(holder.itemView.getContext(),""));
 
@@ -63,9 +64,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         //Views in the Profile card
-        TextView cardUsername, cardLocation, cardJoined, cardBio;
+        TextView cardUsername, cardLocation, cardJoined, cardBio, cardGender;
         MaterialButton profileIcon;
         ChipGroup chipGroup;
+        ImageView profileImage;
 
 
 
@@ -76,8 +78,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.MyViewHo
             cardLocation = itemView.findViewById(R.id.cardLocation);
             cardJoined = itemView.findViewById(R.id.cardJoined);
             cardBio = itemView.findViewById(R.id.bio);
-            profileIcon = itemView.findViewById(R.id.profileIcon);
+
             chipGroup = itemView.findViewById(R.id.interestsChipGroup);
+            profileImage = itemView.findViewById(R.id.profileImage);
+            cardGender = itemView.findViewById(R.id.cardGender);
 
            // btnLike = itemView.findViewById(R.id.btnLike);
         }

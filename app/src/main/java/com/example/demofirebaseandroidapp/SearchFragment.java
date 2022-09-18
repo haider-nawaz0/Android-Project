@@ -53,7 +53,7 @@ public class SearchFragment extends Fragment {
     private MaterialButton btnSearch;
     private AutoCompleteTextView autoCompleteTextView;
     private ArrayAdapter<String> arrayAdapter;
-    private String[] items = {"Gujranwala", "Lahore", "Pindi", "Islamabad"};
+    private String[] items = {"Gujranwala", "Lahore", "Pindi", "Islamabad", "Karachi", "Sialkot", "Daska"};
 
     private String locationSelected;
 
@@ -103,24 +103,6 @@ public class SearchFragment extends Fragment {
                 Toast.makeText(getContext(), locationSelected, Toast.LENGTH_SHORT).show();
             }
         });
-
-//        searchField.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                progress.show();
-//                ProfileChangeListener(editable.toString());
-//            }
-//        });
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override

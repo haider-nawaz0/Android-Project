@@ -7,6 +7,7 @@ public class Profile {
     private String username, location, joined, email, bio ;
     private boolean male;
     private ArrayList<String> interests;
+    private String profileImageLink;
 
     public ArrayList<String> getInterests() {
         return interests;
@@ -14,6 +15,14 @@ public class Profile {
 
     public void setInterests(ArrayList<String> interests) {
         this.interests = interests;
+    }
+
+    public String getProfileImageLink() {
+        return profileImageLink;
+    }
+
+    public void setProfileImageLink(String profileImageLink) {
+        this.profileImageLink = profileImageLink;
     }
 
     public Profile() {
@@ -70,7 +79,7 @@ public class Profile {
 
 
 
-    public Profile(String username, String location, String joined, String email, String bio, boolean male, ArrayList<String> interests) {
+    public Profile(String username, String location, String joined, String email, String bio, boolean male, ArrayList<String> interests, String profileImageLink) {
         this.username = username;
         this.location = location;
         this.joined = joined;
@@ -78,5 +87,6 @@ public class Profile {
         this.bio = bio;
         this.male = male;
         this.interests = interests;
+        this.profileImageLink = profileImageLink;
     }
 }

@@ -25,32 +25,27 @@
             android:layout_height="wrap_content"
             >
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPost"
-                style="?attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
 
-
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:icon="@drawable/ic_male_user"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/authorImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_male_user"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="1dp"></de.hdodenhof.circleimageview.CircleImageView>
 
 
             <TextView
-                android:id="@+id/cardEmail"
+                android:id="@+id/cardUsername"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="false"
                 android:layout_marginLeft="0dp"
-                android:layout_toRightOf="@+id/btnPost"
-                android:text="haider@gmail.com"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/authorImage"
+                android:text="Haider Nawaz"
 
 
                 android:textAppearance="?attr/textAppearanceHeadline6"
@@ -60,11 +55,11 @@
                 android:id="@+id/cardTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/cardEmail"
+                android:layout_below="@+id/cardUsername"
                 android:layout_alignParentRight="false"
                 android:layout_marginTop="2dp"
                 android:layout_marginLeft="0dp"
-                android:layout_toRightOf="@+id/btnPost"
+                android:layout_toRightOf="@+id/authorImage"
 
                 android:layout_marginBottom="25dp"
                 android:text="31 4 2022"
@@ -72,6 +67,24 @@
 
 
                 ></TextView>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelPost"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:foregroundTint="@color/red"
+                app:icon="@drawable/ic_baseline_delete_24"
+                app:rippleColor="@color/red"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
 
         </RelativeLayout>
 
@@ -90,12 +103,12 @@
                 android:layout_height="wrap_content"
 
 
-                android:layout_centerInParent="false"
+
                 android:layout_marginLeft="15dp"
                 android:text="this is caption, you can write here whatever\nyou want"
                 android:textColor="@color/black"
                 android:textSize="17dp"
-                android:textStyle="italic"></TextView>
+                android:textStyle="normal"></TextView>
         </RelativeLayout>
 
         <ImageView

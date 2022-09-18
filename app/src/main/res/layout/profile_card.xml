@@ -13,7 +13,7 @@
     android:layout_marginTop="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
+
 
     android:orientation="vertical">
 
@@ -30,19 +30,14 @@
 
             >
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/profileIcon"
-                style="?attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:insetLeft="0dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="70dp"
+                android:layout_margin="10dp"
+                android:layout_height="70dp"
+                android:id="@+id/profileImage"
+                ></de.hdodenhof.circleimageview.CircleImageView>
 
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:icon="@drawable/ic_male_user"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"></com.google.android.material.button.MaterialButton>
+
             <TextView
                 android:id="@+id/cardUsername"
                 android:layout_width="wrap_content"
@@ -52,6 +47,8 @@
                 android:text="Harry Styles"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
         </LinearLayout>
+
+
 
 
 
@@ -97,6 +94,28 @@
                android:text="Joined on 31 4 2022"
                android:textSize="14dp"
                ></TextView>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp"
+               android:text="."
+               android:textSize="16dp"
+               android:layout_marginBottom="4dp"
+               android:textStyle="bold"
+               android:textColor="@color/black"
+               android:gravity="center"
+
+               ></TextView>
+           <TextView
+               android:id="@+id/cardGender"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+
+
+               android:text="M"
+               android:textSize="14dp"
+               ></TextView>
 
        </LinearLayout>
 
@@ -104,12 +123,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
 
             android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/bio"
+
+
 
                 android:text="If you were a flower, can I be your leaf."
                 android:textSize="16dp"
@@ -128,6 +151,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
 
             >
 
@@ -138,56 +164,6 @@
 
                 >
 
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:id="@+id/chipOutdoorSports"-->
-<!--                    style="@style/Widget.MaterialComponents.Chip.Choice"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-
-
-<!--                    android:text="Outdoor Sports"-->
-<!--                    app:checkedIcon="@drawable/ic_baseline_check_24" />-->
-
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:id="@+id/chipNetflix"-->
-<!--                    style="@style/Widget.MaterialComponents.Chip.Choice"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-
-<!--                    android:text="Coding"-->
-<!--                    app:checkedIcon="@drawable/ic_baseline_check_24" />-->
-<!--                <com.google.android.material.chip.Chip-->
-
-<!--                    style="@style/Widget.MaterialComponents.Chip.Choice"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-
-<!--                    android:text="Hollywood"-->
-<!--                    app:checkedIcon="@drawable/ic_baseline_check_24" />-->
-<!--                <com.google.android.material.chip.Chip-->
-
-<!--                    style="@style/Widget.MaterialComponents.Chip.Choice"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-
-<!--                    android:text="Nice Stuff"-->
-<!--                    app:checkedIcon="@drawable/ic_baseline_check_24" />-->
-<!--                <com.google.android.material.chip.Chip-->
-
-<!--                    style="@style/Widget.MaterialComponents.Chip.Choice"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-
-<!--                    android:text="Netflix"-->
-<!--                    app:checkedIcon="@drawable/ic_baseline_check_24" />-->
-<!--                <com.google.android.material.chip.Chip-->
-
-<!--                    style="@style/Widget.MaterialComponents.Chip.Choice"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-
-<!--                    android:text="Netflix"-->
-<!--                    app:checkedIcon="@drawable/ic_baseline_check_24" />-->
 
             </com.google.android.material.chip.ChipGroup>
 
