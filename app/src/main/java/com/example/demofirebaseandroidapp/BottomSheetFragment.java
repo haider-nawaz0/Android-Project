@@ -160,7 +160,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         data.put("likedBy",likedBy);
         data.put("imageLink", imageDownloadLink);
         data.put("authorImageLink", currUserImage);
-        data.put("username", LoginActivity.currUsername);
+        data.put("username", HomeActivity.currUsername);
 
 
         db.collection("posts")

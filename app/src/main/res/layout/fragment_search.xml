@@ -19,25 +19,30 @@
 
         android:orientation="vertical">
 
-<com.google.android.material.textfield.TextInputLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:startIconDrawable="@drawable/ic_baseline_search_24"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="8dp"
 
-    android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
 
-    >
-    <com.google.android.material.textfield.TextInputEditText
 
-        android:id="@+id/searchField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_baseline_search_24"
+            android:hint="Choose Interest"
+            >
+            <AutoCompleteTextView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/autoCompleteTextViewInterest"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        android:hint="Search by interests"
-        >
 
-    </com.google.android.material.textfield.TextInputEditText>
-</com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"

@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
 
 
-            android:text="Outdoor Sports"
+            android:text="Outdoor Activities"
             app:checkedIcon="@drawable/ic_baseline_check_24" />
 
         <com.google.android.material.chip.Chip
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Coding"
+            android:text="Social Media"
             app:checkedIcon="@drawable/ic_baseline_check_24" />
 
         <com.google.android.material.chip.Chip
@@ -107,6 +107,16 @@
             app:checkedIcon="@drawable/ic_baseline_check_24" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chipLudo"
+
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Ludo"
+            app:checkedIcon="@drawable/ic_baseline_check_24" />
+
+        <com.google.android.material.chip.Chip
             android:id="@+id/chipLibrary"
 
             style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -123,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text=" M Instruments"
+            android:text="Instruments"
             app:checkedIcon="@drawable/ic_baseline_check_24" />
 
         <com.google.android.material.chip.Chip

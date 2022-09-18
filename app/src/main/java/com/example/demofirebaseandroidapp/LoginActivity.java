@@ -30,9 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private MaterialButton login, btnMoveToSignUpScreen;
     private FirebaseAuth auth;
     private ProgressDialog progress;
-    private FirebaseFirestore db;
 
-    public static String currUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +86,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
 
 
-                //If the user is logged in, get his profile iamge link
+                progress.dismiss();
 
+                //Once we get the profile image link and set it to the static var, then we move to the next screen
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                finish();
 
-                getCurrUsername();
+                //getCurrUsername();
 
 
 
@@ -99,37 +100,6 @@ public class LoginActivity extends AppCompatActivity {
 
         });
     }
-    private void getCurrUsername(){
-
-
-        db = FirebaseFirestore.getInstance();
-
-
-        db.collection("profiles").whereEqualTo("email", auth.getCurrentUser().getEmail().toString()).get().addOnCompleteListener(
-                new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-
-
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                               currUsername = document.getString("username");
-                                Toast.makeText(getApplicationContext(), currUsername, Toast.LENGTH_SHORT).show();
-                            }
-                            progress.dismiss();
-
-                            //Once we get the profile image link and set it to the static var, then we move to the next screen
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                            finish();
-
-                        }
-                    }
-                }
-        );
-
-    }
-
-
 
 
 }

@@ -52,11 +52,18 @@ public class SearchFragment extends Fragment {
     private ProgressDialog progress;
     private TextInputEditText searchField;
     private MaterialButton btnSearch;
-    private AutoCompleteTextView autoCompleteTextView;
-    private ArrayAdapter<String> arrayAdapter;
+    private AutoCompleteTextView autoCompleteTextView, autoCompleteTextViewInterests;
+    private ArrayAdapter<String> arrayAdapter, interestsAdapter;
+
     private String[] items = {"Gujranwala", "Lahore", "Pindi", "Islamabad", "Karachi", "Sialkot", "Daska"};
 
+    private String [] interestsItems = { "Outdoor Activities", "Netflix", "Social Media", "Lofi", "Flutter",
+            "Web Development", "Ludo", "Library", "Instruments", "Music", "TikTok", "Instagram",
+            "Mobile Development", "Fitness", "Bollywood", "Chris Prat", "DC World Action"};;
+
+
     private String locationSelected;
+    private String interestSelected;
 
 
     @Override
@@ -88,15 +95,28 @@ public class SearchFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         auth = FirebaseAuth.getInstance();
-        searchField = view.findViewById(R.id.searchField);
+        //searchField = view.findViewById(R.id.searchField);
         btnSearch = view.findViewById(R.id.btnSearch);
 
         autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView);
         arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.dropdown_item, items);
         autoCompleteTextView.setAdapter(arrayAdapter);
 
+        autoCompleteTextViewInterests = view.findViewById(R.id.autoCompleteTextViewInterest);
+        interestsAdapter = new ArrayAdapter<String>(getContext(), R.layout.dropdown_item, interestsItems);
+        autoCompleteTextViewInterests.setAdapter(interestsAdapter);
+
 
         getAllProfiles();
+
+        autoCompleteTextViewInterests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapterView.getItemAtPosition(i).toString();
+                interestSelected = item.toString();
+                Toast.makeText(getContext(), interestSelected, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         //Handle drop down click
@@ -112,11 +132,11 @@ public class SearchFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String queryTxt = searchField.getText().toString();
 
 
 
-                if(queryTxt.isEmpty() || locationSelected.isEmpty()){
+
+                if(interestSelected == null || locationSelected == null){
                     Snackbar.make( getActivity().findViewById(android.R.id.content), "Input all the fields!", Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.red))
                             .show();
 
@@ -126,9 +146,10 @@ public class SearchFragment extends Fragment {
 
                 clear();
 
-                queryTxt = queryTxt.substring(0, 1).toUpperCase() + queryTxt.substring(1);
+                interestSelected = interestSelected.substring(0, 1).toUpperCase() + interestSelected.substring(1);
+
                 progress.show();
-                ProfileChangeListener(queryTxt, locationSelected);
+                ProfileChangeListener(interestSelected, locationSelected);
             }
         });
 
