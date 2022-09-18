@@ -137,7 +137,7 @@
                 android:text="If you were a flower, can I be your leaf."
                 android:textSize="16dp"
                 android:layout_margin="4dp"
-                android:textStyle="italic"
+                android:textStyle="normal"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 ></TextView>

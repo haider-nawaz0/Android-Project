@@ -143,9 +143,10 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
 
-        app:strokeColor="@color/black"
+        app:strokeColor="#7E57C2"
         android:layout_marginBottom="20dp"
         app:strokeWidth="1dp"
+
 
         android:layout_height="100dp">
         <ImageView
@@ -153,6 +154,7 @@
             android:id="@+id/profileImageView"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_baseline_add_24"
+
 
             android:layout_height="match_parent">
 

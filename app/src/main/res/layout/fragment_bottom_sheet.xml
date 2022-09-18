@@ -23,6 +23,7 @@
 
         android:layout_gravity="center"
         android:layout_margin="20dp"
+        android:textStyle="bold"
 
         ></TextView>
 
@@ -65,6 +66,7 @@
             android:layout_height="wrap_content"
             android:text="Choose an Image"
             android:layout_marginTop="20dp"
+            android:textStyle="normal"
             android:textSize="20dp"
             android:layout_gravity="center"
             android:textColor="@color/black"
@@ -74,7 +76,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
 
-            app:strokeColor="@color/black"
+            app:strokeColor="#7E57C2"
             app:strokeWidth="1dp"
 
             android:layout_height="100dp">
@@ -103,11 +105,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        app:strokeColor="#7E57C2"
         app:strokeWidth="1dp"
-        android:textColor="@color/black"
+        android:textColor="#7E57C2"
 
-        app:strokeColor="@color/black"
-        app:rippleColor="@color/white"
+
+
         android:layout_gravity="center_horizontal"
         android:textStyle="bold"
         android:text="Add Post"></com.google.android.material.button.MaterialButton>

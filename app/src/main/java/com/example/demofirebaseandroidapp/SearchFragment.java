@@ -84,6 +84,7 @@ public class SearchFragment extends Fragment {
 
         recyclerView.setAdapter(profileAdapter);
 
+
         db = FirebaseFirestore.getInstance();
 
         auth = FirebaseAuth.getInstance();
