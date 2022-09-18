@@ -19,6 +19,7 @@
         android:textSize="40dp"
         android:textStyle="normal"></TextView>
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
 
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-       android:layout_marginBottom="15dp"
+       android:layout_marginBottom="5dp"
         android:orientation="vertical"
         android:id="@+id/linearLayout"
         android:layout_below="@+id/imageView"
@@ -95,30 +96,34 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnL"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp"
-
             android:layout_width="match_parent"
-            app:cornerRadius="50dp"
             android:layout_height="55dp"
 
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+
+            android:text="Login"
 
 
-            android:text="Login"></com.google.android.material.button.MaterialButton>
+            app:cornerRadius="50dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnMoveToSignUpScreen"
-
-
             style="?attr/borderlessButtonStyle"
+
+
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLogin"
             android:layout_centerHorizontal="true"
             android:text="Sign Up Instead"
 
 
             android:textSize="14dp"></com.google.android.material.button.MaterialButton>
+
+
+
     </LinearLayout>
 
 </RelativeLayout>

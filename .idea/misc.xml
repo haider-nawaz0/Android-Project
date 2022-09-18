@@ -19,9 +19,11 @@
         <entry key="app/src/main/res/drawable/ic_log_out_svgrepo_com.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable/ic_mobile_login_pana.xml" value="0.1125" />
         <entry key="app/src/main/res/drawable/ic_sign_out_circle_svgrepo_com.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_welcome_amico.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_write_svgrepo_com_2.xml" value="0.1515" />
+        <entry key="app/src/main/res/font/roboto_bold.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2127659574468085" />
-        <entry key="app/src/main/res/layout/activity_interests.xml" value="0.2635416666666667" />
+        <entry key="app/src/main/res/layout/activity_interests.xml" value="0.24178873697916667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2649429321289063" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2853424072265625" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24947916666666667" />

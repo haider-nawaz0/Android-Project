@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linLayout"
-       android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
 
         android:orientation="vertical">
 
@@ -66,19 +69,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linLayout"
-        android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
-
         android:layout_marginTop="0dp"
+
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
         android:text="Begin Search"></com.google.android.material.button.MaterialButton>
+
+
+    <TextView
+        android:id="@+id/txtSimilarPosts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSearch"
+        android:layout_marginStart="20dp"
+
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+
+
+        android:text="Explore Similar Profiles"
+        android:textColor="@color/black"
+        android:textSize="22dp"></TextView>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/profilesRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottomTxt"
-        android:layout_below="@+id/btnSearch"
+        android:layout_below="@+id/txtSimilarPosts"
         android:layout_centerInParent="true"
 
         android:layout_gravity="center"></androidx.recyclerview.widget.RecyclerView>

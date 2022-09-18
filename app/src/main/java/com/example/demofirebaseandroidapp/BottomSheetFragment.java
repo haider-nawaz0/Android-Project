@@ -69,6 +69,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
 
     public static String currUserImage;
 
+    private static String txtPost;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,7 +90,17 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                txtPost = fieldPost.getText().toString();
 
+
+                if(txtPost.isEmpty()){
+
+
+                    Snackbar.make( getDialog().getWindow().getDecorView(), "Post cannot be empty!", Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.red))
+                            .show();
+
+                    return;
+                }
                 progress.show();
                uploadPostImage();
 
@@ -220,7 +232,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                                 imageDownloadLink  = uri.toString();
 
                                 //Add other data
-                                String txtPost = fieldPost.getText().toString();
+
+
                                 addPostToFirestore(txtPost, user.getEmail());
 
                             }
@@ -236,7 +249,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         }
         else {
             //Add other data
-            String txtPost = fieldPost.getText().toString();
+
+
+
             addPostToFirestore(txtPost, user.getEmail());
         }
 

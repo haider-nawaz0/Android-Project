@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     public static TextInputEditText fBio, fieldUsername;
-    public static String userLocation, txt_bio, txtUsername, txt_email;
+    public static String userLocation, txt_bio, txtUsername, txt_email, txt_password;
 
     private MaterialButton next,btnMoveToLoginScreen;
 
@@ -161,6 +161,26 @@ public class RegisterActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                txt_email = email.getText().toString();
+                txt_password = password.getText().toString();
+
+                //Get other values
+                txt_bio = fBio.getText().toString();
+                txtUsername = fieldUsername.getText().toString();
+
+
+                if(imageUri == null || txt_email.isEmpty() || txt_password.isEmpty() || txt_bio.isEmpty()
+                        || txtUsername.isEmpty() || userLocation.isEmpty()){
+                    progress.hide();
+
+                    Snackbar.make( findViewById(android.R.id.content), "Please input all the fields!", Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.red))
+                            .show();
+
+                    return;
+                }
+
+
                     progress.show();
 
                     uploadPostImage();
@@ -215,14 +235,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 imageDownloadLink  = uri.toString();
 
 
-                                //Register the user
-                                //Register the user
-                                txt_email = email.getText().toString();
-                                String txt_password = password.getText().toString();
-
-                                //Get other values
-                                txt_bio = fBio.getText().toString();
-                                txtUsername = fieldUsername.getText().toString();
 
                                 registerUser(txt_email, txt_password);
 
@@ -246,4 +258,5 @@ public class RegisterActivity extends AppCompatActivity {
             });
         }
     }
+
 }

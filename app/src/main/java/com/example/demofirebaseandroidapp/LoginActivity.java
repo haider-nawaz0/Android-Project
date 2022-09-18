@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -32,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
 
     public static String currUsername;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +63,19 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress.show();
                 String txt_email = email.getText().toString();
                 String txt_pass = password.getText().toString();
+
+
+                if(txt_email.isEmpty() || txt_pass.isEmpty()){
+
+                    Snackbar.make( findViewById(android.R.id.content), "Please input all the fields!", Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.red))
+                            .show();
+
+                    return;
+                }
+                progress.show();
+
 
                 loginUser(txt_email, txt_pass);
             }

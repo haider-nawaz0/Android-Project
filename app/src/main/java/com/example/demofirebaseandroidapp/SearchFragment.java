@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
@@ -94,6 +95,9 @@ public class SearchFragment extends Fragment {
         autoCompleteTextView.setAdapter(arrayAdapter);
 
 
+        getAllProfiles();
+
+
         //Handle drop down click
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -107,9 +111,20 @@ public class SearchFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String queryTxt = searchField.getText().toString();
+
+
+
+                if(queryTxt.isEmpty() || locationSelected.isEmpty()){
+                    Snackbar.make( getActivity().findViewById(android.R.id.content), "Input all the fields!", Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.red))
+                            .show();
+
+                    return;
+                }
+
 
                 clear();
-                String queryTxt = searchField.getText().toString();
+
                 queryTxt = queryTxt.substring(0, 1).toUpperCase() + queryTxt.substring(1);
                 progress.show();
                 ProfileChangeListener(queryTxt, locationSelected);
@@ -142,6 +157,31 @@ public class SearchFragment extends Fragment {
 
 
     }
+
+
+    private void getAllProfiles(){
+        db.collection("profiles").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+
+                if(!task.isSuccessful()){
+                    progress.dismiss();
+                    Toast.makeText(getView().getContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }else {
+
+                    for(QueryDocumentSnapshot document: task.getResult()){
+
+                        //Toast.makeText(getView().getContext(), document.toObject(Profile.class).toString(), Toast.LENGTH_SHORT).show();
+                        profiles.add(document.toObject(Profile.class));
+                        profileAdapter.notifyDataSetChanged();
+                        progress.dismiss();
+                    }
+                }
+            }
+        });
+    }
+
 
 
 
